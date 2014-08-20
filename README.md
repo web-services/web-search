@@ -7,7 +7,34 @@ The problem is that search and retrieval of data from multiple and external sour
 
 This service standard sets out to remove barriers, streamline use-cases, and make search a truly effortless activity for developers. Let's take a look at how it works:
 
+```
 
+// Create and configure a [WebSearch Object] instance
 
+var mySearch = new WebSearch(['www.target.com', 'www.zazzle.com'], {
+  query: 'red t-shirt',
+  skip: 0,
+  take: 20
+});
 
+// Add callbacks to the instance of [WebSearch Object]
+
+mySearch.onsuccess = function(results){
+  for (var z in results){
+    results[z].forEach(function(result){
+      
+    });
+  }
+};
+
+mySearch.onerror = function(error){
+  
+};
+
+// Fetch results using the current parameters
+// and state of the [WebSearch Object]
+
+mySearch.fetch();
+
+```
 
