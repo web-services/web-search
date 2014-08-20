@@ -13,7 +13,7 @@ This service standard sets out to remove barriers, streamline use-cases, and mak
 
 var mySearch = new WebSearch(['www.target.com', 'www.zazzle.com'], {
   context: 'product',
-  query: 'red t-shirt',
+  query: 'red shirt',
   skip: 0,
   take: 20
 });
