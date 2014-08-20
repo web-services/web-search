@@ -7,7 +7,7 @@ The problem is that search and retrieval of data from multiple and external sour
 
 This service standard sets out to remove barriers, streamline use-cases, and make search a truly effortless activity for developers. Let's take a look at how it works:
 
-```
+```javascript
 
 // Create and configure a [WebSearch Object] instance
 
