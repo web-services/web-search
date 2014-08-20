@@ -37,5 +37,17 @@ mySearch.onerror = function(error){
 
 mySearch.fetch();
 
+// Fetches the next set of results based on the
+// current skip/take values of the [WebSearch Object].
+// The object's skip value automatically advanced.
+
+mySearch.next();
+
+// Fetches the previous set of results based on the
+// current skip/take values of the [WebSearch Object]
+// The object's skip value automatically decremented.
+
+mySearch.previous();
+
 ```
 
