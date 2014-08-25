@@ -15,9 +15,11 @@ This service standard sets out to remove barriers, streamline use-cases, and mak
 
 var mySearch = new WebSearch(['www.target.com', 'www.zazzle.com'], {
   context: 'product',
-  query: 'red shirt',
-  skip: 0,
-  take: 20
+  parameters: {
+    query: 'red shirt',
+    skip: 0,
+    take: 20
+  }
 });
 
 // Add callbacks to the instance of [WebSearch Object]
@@ -65,7 +67,7 @@ The first step the User Agent performs, is to fetch the `services.json` file(s) 
 
 ##### 2. Generate a crypto-random key _(occurs only once, per domain)_
 
-The first time a domain is included in a WebSearch instance, after its `services,json` file is verified, the UA will generate a key that is passed to the domain's search endpoint for every request. This key is securely stored on the client by the UA, and is never revealed to the app invoking the WebSearch.
+The first time a domain is included in a WebSearch instance, after its `services.json` file is verified, the UA will generate a key that is passed to the domain's search endpoint for every request. This key is securely stored on the client by the UA, and is never revealed to the app invoking the WebSearch.
 
 ##### 3. Create and dispatch requests
 
