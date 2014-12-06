@@ -13,7 +13,7 @@ This service standard sets out to remove barriers, streamline use-cases, and mak
 
 // Create and configure a [WebSearch Object] instance
 
-var mySearch = new WebSearch(['www.target.com', 'www.zazzle.com'], {
+var mySearch = new WebSearch(['target.com', 'walmart.com', 'overstock.com'], {
   context: 'product',
   parameters: {
     query: 'red shirt',
