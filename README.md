@@ -65,18 +65,15 @@ It is helpful to understand how the system works. In the following section, we'l
 
 The first step the User Agent performs, is to fetch the `services.json` file(s) from the root of the domains passed into the WebSearch object instantiation. If the JSON descriptor file is located, and contains a `search` object with a `url` endpoint value, it caches this endpoint as the target for WebSearch requests. This only happens if this leg of the journey has never been performed for the requesting domain, or if the cache period for the file has expired.
 
-##### 2. Generate a crypto-random key _(occurs only once, per domain)_
 
-The first time a domain is included in a WebSearch instance, after its `services.json` file is verified, the UA will generate a key that is passed to the domain's search endpoint for every request. This key is securely stored on the client by the UA, and is never revealed to the app invoking the WebSearch.
-
-##### 3. Create and dispatch requests
+##### 2. Create and dispatch requests
 
 Once the UA has determined a URL location for each domain's search requests, it dispatches one request for each domain provided. These requests are cross-domain allowed by default, as the presence of the `services.json` file acts as a directive to the UA to allow cross-origin requests to the specified search service endpoint.
 
-##### 4. Domain packaging and returns
+##### 3. Domain packaging and returns
 
 Domains recieve the standard request payload from a WebSearch request, and return their results as an array of items.
 
-##### 5. User callback invocation
+##### 4. User callback invocation
 
 The `onsuccess` callback will be invoked by the UA when each domain response is returned. If the request for a domain times out or another error is encountered that prevent successful completion of the request phase, the `onerror` callback will be invoked with an error object specific to that domain,  and the problem that occurred.
