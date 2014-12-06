@@ -61,14 +61,14 @@ mySearch.previous();
 
 It is helpful to understand how the system works. In the following section, we'll explore the steps the UA takes in processing, dispatching, and returning results. There are 4 important proceedures in the system that allow for the API to work.
 
-##### 1. Fetch and verify `services.json`
+##### 1. Fetch and verify [`services.json`](https://github.com/web-services/services-json/blob/master/services.json)
 
 The first step the User Agent performs, is to fetch the `services.json` file(s) from the root of the domains passed into the WebSearch object instantiation. If the JSON descriptor file is located, and contains a `search` object with a `url` endpoint value, it caches this endpoint as the target for WebSearch requests. This only happens if this leg of the journey has never been performed for the requesting domain, or if the cache period for the file has expired.
 
 
 ##### 2. Create and dispatch requests
 
-Once the UA has determined a URL location for each domain's search requests, it dispatches one request for each domain provided. These requests are cross-domain allowed by default, as the presence of the [`services.json`](https://github.com/web-services/services-json/blob/master/services.json) file acts as a directive to the UA to allow cross-origin requests to the specified search service endpoint.
+Once the UA has determined a URL location for each domain's search requests, it dispatches one request for each domain provided. These requests are cross-domain allowed by default, as the presence of the `services.json` file acts as a directive to the UA to allow cross-origin requests to the specified search service endpoint.
 
 ##### 3. Domain packaging and returns
 
