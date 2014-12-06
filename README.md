@@ -68,7 +68,7 @@ The first step the User Agent performs, is to fetch the `services.json` file(s) 
 
 ##### 2. Create and dispatch requests
 
-Once the UA has determined a URL location for each domain's search requests, it dispatches one request for each domain provided. These requests are cross-domain allowed by default, as the presence of the `services.json` file acts as a directive to the UA to allow cross-origin requests to the specified search service endpoint.
+Once the UA has determined a URL location for each domain's search requests, it dispatches one request for each domain provided. These requests are cross-domain allowed by default, as the presence of the `services.json`[↗](https://github.com/web-services/services-json/blob/master/services.json) file acts as a directive to the UA to allow cross-origin requests to the specified search service endpoint.
 
 ##### 3. Domain packaging and returns
 
