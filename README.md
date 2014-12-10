@@ -13,18 +13,27 @@ This service standard sets out to remove barriers, streamline use-cases, and mak
 
 // Create and configure a [WebSearch Object] instance
 
-var mySearch = new WebSearch(['target.com', 'walmart.com', 'overstock.com'], {
+var tgtShirts = new WebSearch('target.com', {
   context: 'product',
   parameters: {
-    query: 'red shirt',
+    query: 'dress shirt',
     skip: 0,
     take: 20
   }
 });
 
+var wmShirts = new WebSearch('walmart.com', {
+  context: 'product',
+  parameters: {
+    query: 'dress shirt',
+    skip: 10,
+    take: 30
+  }
+});
+
 // Add callbacks to the instance of [WebSearch Object]
 
-mySearch.onsuccess = function(results){
+tgtShirts.onsuccess = function(results){
   for (var z in results){
     results[z].forEach(function(result){
       
@@ -32,7 +41,7 @@ mySearch.onsuccess = function(results){
   }
 };
 
-mySearch.onerror = function(error){
+wmShirts.onerror = function(error){
   
 };
 
@@ -63,17 +72,17 @@ It is helpful to understand how the system works. In the following section, we'l
 
 ##### 1. Fetch and verify [`services.json`](https://github.com/web-services/services-json/blob/master/services.json)
 
-The first step the User Agent performs, is to fetch the `services.json` file(s) from the root of the domains passed into the WebSearch object instantiation. If the JSON descriptor file is located, and contains a `search` object with a `url` endpoint value, it caches this endpoint as the target for WebSearch requests. This only happens if this leg of the journey has never been performed for the requesting domain, or if the cache period for the file has expired.
+The first step the User Agent performs, is to fetch the `services.json` file(s) from the root of the domain passed into the WebSearch object instantiation. If the JSON descriptor file is located, and contains a `search` object with a `url` endpoint value matching the specified `context`, it caches this endpoint for subsequent WebSearch requests. This only happens if this leg of the journey has never been performed for the requesting domain, or if the cache period for the file has expired.
 
 
 ##### 2. Create and dispatch requests
 
-Once the UA has determined a URL location for each domain's search requests, it dispatches one request for each domain provided. These requests are cross-domain allowed by default, as the presence of the `services.json` file acts as a directive to the UA to allow cross-origin requests to the specified search service endpoint.
+Once the UA has determined a URL location for each domain's search requests, it dispatches a request to the endpoint provided. These requests are cross-domain allowed by default, as the presence of the `services.json` file acts as a directive to the UA to allow cross-origin requests to the specified search endpoints.
 
 ##### 3. Domain packaging and returns
 
-Domains recieve the standard request payload from a WebSearch request, and return their results as an array of items.
+Domains recieve the standard request parameter set from a WebSearch request, and return their results as an array of items with a few other details (total result count, etc).
 
 ##### 4. User callback invocation
 
-The `onsuccess` callback will be invoked by the UA when each domain response is returned. If the request for a domain times out or another error is encountered that prevent successful completion of the request phase, the `onerror` callback will be invoked with an error object specific to that domain,  and the problem that occurred.
+The `onsuccess` callback will be invoked by the UA when the domain returns a response. If the request for a domain times out or another error is encountered that prevents successful completion of the request phase, the `onerror` callback will be invoked with an error object specific to that domain and the problem that occurred.
