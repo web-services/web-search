@@ -50,19 +50,19 @@ wmShirts.onerror = function(error){
 // be used to fetch from a new skip and take position.
 // Use of the parameters updates the object's skip/take values.
 
-mySearch.fetch(skip, take);
+wmShirts.fetch(skip, take);
 
 // Fetches the next set of results based on the
 // current skip/take values of the [WebSearch Object].
 // The object's skip value automatically advanced.
 
-mySearch.next();
+tgtShirts.next();
 
 // Fetches the previous set of results based on the
 // current skip/take values of the [WebSearch Object]
 // The object's skip value automatically decremented.
 
-mySearch.previous();
+tgtShirts.previous();
 
 ```
 
